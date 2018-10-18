@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">	<title></title>
+</head>
+<body>
+		<h1>Continue as</h1>
+	<span id="b1">
+		<a href='#' id='bb2'>Guest</a>
+	</span>				
+	<span id="b2">
+		<a href='#' onclick="show('block')" id='bb1'>Authorised User</a>
+	</span>
+		<div onclick="show('none')" id="gray"></div>
+		<div id="window">
+			<div class="form">
+                <div style="margin-top: 20%; margin-left: -150%;" ><a href='register.html' id="bb1">New User</a></div>
+                <div style="margin-top: 40%;margin-left: -150%;"><a href='LogIn.html' id="bb1">Log In</a></div>
+
+			</div>
+		</div>
+		<script>
+            //Функция показа
+            function show(state)
+            {
+                document.getElementById('window').style.display = state;
+                document.getElementById('gray').style.display = state;
+            }
+		</script>
+</body>
+</html>
