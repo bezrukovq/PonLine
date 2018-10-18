@@ -19,22 +19,11 @@ public class Welcome extends javax.servlet.http.HttpServlet {
                          javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        String user = (String) session.getAttribute("name");
+        String user = (String) session.getAttribute("login");
         if (user != null) {
             response.sendRedirect("/main"); //зачем авторизованному логиниться
         } else {
-            String login = "";
-            boolean hasCookies = false;
-            Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("login")) {
-                    login = cookie.getValue();
-                    hasCookies=true;
-                    session.setAttribute("login", login);
-                    response.sendRedirect("/main");
-                }
-            }
-            if (!hasCookies) {
+            if (!Helper.logged(request,session,response)) {
                 response.setContentType("text/html");
                 Configuration cfg = Helper.getConfig(getServletContext());
                 Template tmpl = cfg.getTemplate("welcome.html");

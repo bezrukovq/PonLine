@@ -18,6 +18,7 @@ public class LogIn extends HttpServlet {
         HttpSession session = request.getSession();
         String user = (String) session.getAttribute("name");
         String login = request.getParameter("login");
+        String passw = request.getParameter("password");
         if (user != null) {
             response.sendRedirect("/profile"); //как он вообще сюда попал
         } else {
@@ -36,14 +37,22 @@ public class LogIn extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        Configuration cfg = Helper.getConfig(getServletContext());
-        Template tmpl = cfg.getTemplate("login.html");
-        HashMap<String, Object> root = new HashMap<>();
-        root.put("form_url", request.getRequestURI());
-        try {
-            tmpl.process(root, response.getWriter());
-        } catch (TemplateException e) {
-            e.printStackTrace();
+        HttpSession session = request.getSession();
+        String user = (String) session.getAttribute("login");
+        if (user != null) {
+            response.sendRedirect("/main"); //зачем авторизованному логиниться
+        } else {
+            if (!Helper.logged(request,session,response)) {
+                Configuration cfg = Helper.getConfig(getServletContext());
+                Template tmpl = cfg.getTemplate("LogIn.html");
+                HashMap<String, Object> root = new HashMap<>();
+                root.put("form_url", request.getRequestURI());
+                try {
+                    tmpl.process(root, response.getWriter());
+                } catch (TemplateException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
