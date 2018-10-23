@@ -13,7 +13,7 @@ public class SimpleUserDAO implements UserDAO {
         boolean res = false;
         try {
             Statement statement = connection.createStatement();
-             res = statement.execute("insert into users(admin, name, login, describtion, passw) values('false','"+user.getName()
+             res = statement.execute("insert into users(admin, name, login, description, passw) values('false','"+user.getName()
                     +"','"+user.getLogin()+ "','"
                     +user.getDescription()+"','"+user.getPassword()+"')");
         } catch (SQLException e) {
@@ -27,6 +27,21 @@ public class SimpleUserDAO implements UserDAO {
         try {
             PreparedStatement ps = connection.prepareStatement("select login from users where login=?");
             ps.setString(1,login);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean exist(String login, String passw) {
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement("select login from users where login=? and passw=?");
+            ps.setString(1,login);
+            ps.setString(2,passw);
             ResultSet rs = ps.executeQuery();
             return rs.next();
         } catch (SQLException e) {

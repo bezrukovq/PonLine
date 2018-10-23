@@ -26,7 +26,7 @@ public class Welcome extends javax.servlet.http.HttpServlet {
             if (!Helper.logged(request,session,response)) {
                 response.setContentType("text/html");
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("welcome.html");
+                Template tmpl = cfg.getTemplate("greeting.html");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 try {

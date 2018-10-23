@@ -4,6 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import helper.Helper;
+import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,18 +20,25 @@ public class LogIn extends HttpServlet {
         String user = (String) session.getAttribute("name");
         String login = request.getParameter("login");
         String passw = request.getParameter("password");
+        String remember = request.getParameter("remember");
         if (user != null) {
             response.sendRedirect("/profile"); //как он вообще сюда попал
         } else {
             Pattern pattern = Pattern.compile("^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\\d.-]{0,19}$");
             Matcher matcher = pattern.matcher(login);
             if (matcher.matches()) {
-                //TODO check if in base
-                session.setAttribute("login", login);
-                Cookie cookie = new Cookie("login", login);
-                cookie.setMaxAge(60 * 10);
-                response.addCookie(cookie);
-                response.sendRedirect("/main");
+                if(Helper.getUserService().exist(login, passw)) {
+                    session.setAttribute("login", login);
+                    if(remember!=null) {
+                        Cookie cookie = new Cookie("login", login);
+                        cookie.setMaxAge(60);
+                        response.addCookie(cookie);
+                    }
+                    response.sendRedirect("/main");
+
+                } else {
+                    response.sendRedirect("/login");
+                }
             }
         }
     }
@@ -44,7 +52,7 @@ public class LogIn extends HttpServlet {
         } else {
             if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("LogIn.html");
+                Template tmpl = cfg.getTemplate("login.html");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 try {

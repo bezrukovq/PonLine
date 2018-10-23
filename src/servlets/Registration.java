@@ -29,14 +29,9 @@ public class Registration extends HttpServlet {
             Pattern pattern = Pattern.compile("^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\\d.-]{0,19}$");
             Matcher matcher = pattern.matcher(login);
             if (matcher.matches()) {
-                //TODO register user in DB
                 if (!userService.isThere(login)) {
                     userService.registerNewUser(name, login, password, desc);
-                    session.setAttribute("login", login);
-                    Cookie cookie = new Cookie("login", login);
-                    cookie.setMaxAge(60 * 10);
-                    response.addCookie(cookie);
-                    response.sendRedirect("/login"); //переходим в свой профиль
+                    response.sendRedirect("/login");
                 } else {
                     response.sendRedirect("/registration");
                 }
@@ -55,7 +50,7 @@ public class Registration extends HttpServlet {
         } else {
             if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("register.html");
+                Template tmpl = cfg.getTemplate("registration.html");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 try {
