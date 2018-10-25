@@ -21,13 +21,16 @@
     <br>
 
     <form>
-    <div class="form-group">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="search" name="search">
-        <small id="search" class="form-text text-muted"></small>
-        <br>
-    </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                   placeholder="search" name="search">
+            <small id="search" class="form-text text-muted"></small>
+            <br>
+        </div>
     </form>
     <div class="row">
+        <#if news?has_content>
+            <#list news as item>
         <div class="col-md-1.2">
             <form class="container">
                 <img src="../../front/src/img_avatar.png" class="closePic" width="100"
@@ -35,7 +38,7 @@
             </form>
 
             <form class="container">
-                <a href="vk.com/tim_baron" name="profile_link">profile link</a>
+                <a href="/profile?login=${item.getCrLogin()}" name="/profile?id=${item.getCrLogin()}">${item.getCrLogin()}</a>
             </form>
 
             <form class="container">
@@ -45,7 +48,17 @@
 
         <div class="col-md-2">
             <form class="container">
-                <h5 name="title">It's finally happend tomorrow</h5>
+                <a href="/post?id=${item.getId()}"> <h5 name="title">${item.getHeader()}</h5></a>
+                <h6>
+                    <#list item.getTags() as tag>
+                    ${tag},
+                    </#list>
+                </h6>
+                <h6>
+                    <#list item.getCategories() as tag>
+                        ${tag},
+                    </#list>
+                </h6>
             </form>
         </div>
 
@@ -59,9 +72,11 @@
                     counselling available at all universities, where they try and help out as much as possible. I've
                     been a volunteer for our Student Counselling Scheme for some time now. I've found it very rewarding,
                     not only with helping other students through university life but also as an extra-curricular
-                    activity.</a>
+                    activity. DATE ${item.getDate()}</a>
             </form>
         </div>
+            </#list>
+        </#if>
     </div>
 </div>
 </body>

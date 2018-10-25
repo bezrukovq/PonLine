@@ -34,7 +34,7 @@ public class News {
         this.date = date;
     }
 
-    public News(int id,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date, ArrayList<String> tags, ArrayList<String> categories, ArrayList<String> files) {
+    public News(int id,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date) {
         this.id = id;
         this.crLogin = crLogin;
         this.crname = crname;
@@ -43,9 +43,10 @@ public class News {
         this.header = header;
         this.text = text;
         this.date = date;
-        this.tags = tags;
-        this.categories = categories;
-        this.files = files;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCrLogin() {

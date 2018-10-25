@@ -2,6 +2,7 @@ package helper;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+import services.NewsService;
 import services.UserService;
 
 import javax.servlet.ServletContext;
@@ -20,12 +21,20 @@ import java.sql.SQLException;
 public class Helper {
     private static Configuration cfg = null;
     private static Connection connection = null;
+    private static UserService userService = null;
+    private static NewsService newsService = null;
 
     public static UserService getUserService() {
         if(userService == null){
             userService= new UserService();
         }
         return userService;
+    }
+    public static NewsService getNewsService() {
+        if(newsService == null){
+            newsService= new NewsService();
+        }
+        return newsService;
     }
 
     public static boolean logged(HttpServletRequest request, HttpSession session, HttpServletResponse response){
@@ -38,18 +47,12 @@ public class Helper {
                     login = cookie.getValue();
                     hasCookies= true;
                     session.setAttribute("login", login);
-                    try {
-                        response.sendRedirect("/main");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         }
         return hasCookies;
     }
 
-    private static UserService userService = null;
     public static Connection getConnection() {
         if(connection==null){
             try {

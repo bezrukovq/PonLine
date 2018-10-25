@@ -6,4 +6,10 @@ import java.util.ArrayList;
 
 public interface NewsDAO {
     ArrayList<News> getNewsforList();
+
+    ArrayList<String> getTags(int id);
+
+    ArrayList<String> getCategories(int id);
+
+    News getNewsByID(int i);
 }
