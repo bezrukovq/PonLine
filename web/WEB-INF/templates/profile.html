@@ -17,67 +17,38 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" align="center">
     <h1 align="center">
         Profile
     </h1>
 
     <br>
 
+    <form role="form" >
 
-    <div class="row">
-        <div class="col-md-4">
-            <form class="container">
-                <img name="image" src="../../front/src/img_avatar.png" class="closePic" width="150"
-                     height="150">
-            </form>
+
+        <div class="card" style="width: 18rem">
+            <img name="avatar" class="card-img-top" src="../../front/src/img_avatar.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" id="NickName">Vovan1137</h5>
+                <p class="card-text" id="Email">vova@mail.ru</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="Name">Vova Bezrukov</li>
+                <li class="list-group-item" id="Region">Tatarstan</li>
+            </ul>
+            <div class="card-body" align="center">
+                <a href="#" class="card-link" id="Topics">Topics</a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="Name"><input name="button" type="submit" class="btn btn-info btn-block"
+                                                             value="Edit" id="btn_register">
+                </li>
+            </ul>
         </div>
 
-        <div class="col-md-4">
-            <form role="form">
-                <div class="form-group has-error">
-                    <label for="login">Login*</label>
-                    <input type="text" class="form-control" id="login" placeholder="Login"/>
-                </div>
 
-                <div class="form-group">
-                    <label for="mail">Email*</label>
-                    <input type="email" class="form-control" id="mail" placeholder="Email"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="pass">Password*</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Password"/>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <form role="form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname">Surname</label>
-                    <input type="text" class="form-control" id="surname" placeholder="Surname"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="region">Region</label>
-                    <input type="text" class="form-control" id="region" placeholder="region"/>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-md-12">
-            <br>
-        </div>
-
-        <div class="col-md-12" align="center">
-            <input type="button" class="btn btn-primary btn-block" value="Register" id="btn_register">
-        </div>
-    </div>
+    </form>
 </div>
 </body>
 </html>
