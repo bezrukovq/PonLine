@@ -19,64 +19,65 @@
 
 <div class="container">
     <h1 align="center">
-        Registration
+        Profile
     </h1>
 
     <br>
 
-    <form role="form">
 
-        <div class="row">
-            <div class="col-md-4">
-                <img name="avatar" src="../../front/src/img_avatar.png" class="closePic" width="150" height="150">
-                <br>
-                <input style="margin-top: 20px" id="avatarSelect" type="file" name="file"/>
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form class="container">
+                <img name="image" src="../../front/src/img_avatar.png" class="closePic" width="150"
+                     height="150">
+            </form>
+        </div>
 
-            <div class="col-md-4">
+        <div class="col-md-4">
+            <form role="form">
                 <div class="form-group has-error">
                     <label for="login">Login*</label>
-                    <input name="login" type="text" class="form-control" id="login" placeholder="Login"
-                           required="required"/>
+                    <input type="text" class="form-control" id="login" placeholder="Login"/>
                 </div>
 
                 <div class="form-group">
                     <label for="mail">Email*</label>
-                    <input name="email" type="email" class="form-control" id="mail" placeholder="Email"
-                           required="required"/>
+                    <input type="email" class="form-control" id="mail" placeholder="Email"/>
                 </div>
 
                 <div class="form-group">
                     <label for="pass">Password*</label>
-                    <input name="password" type="password" class="form-control" id="pass" placeholder="Password"
-                           required="required"/>
+                    <input type="password" class="form-control" id="pass" placeholder="Password"/>
                 </div>
-            </div>
-
-
-            <div class="col-md-4">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form role="form">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Name"/>
+                    <input type="text" class="form-control" id="name" placeholder="Name"/>
                 </div>
 
                 <div class="form-group">
                     <label for="surname">Surname</label>
-                    <input name="surname" type="text" class="form-control" id="surname" placeholder="Surname"/>
+                    <input type="text" class="form-control" id="surname" placeholder="Surname"/>
                 </div>
 
                 <div class="form-group">
                     <label for="region">Region</label>
-                    <input name="region" type="text" class="form-control" id="region" placeholder="region"/>
+                    <input type="text" class="form-control" id="region" placeholder="region"/>
                 </div>
-            </div>
-
-            <div class="col-md-4">
-                <br>
-            </div>
-            <input name="button" type="submit" class="btn btn-primary btn-block" value="Register" id="btn_register">
+            </form>
         </div>
-    </form>
+
+        <div class="col-md-12">
+            <br>
+        </div>
+
+        <div class="col-md-12" align="center">
+            <input type="button" class="btn btn-primary btn-block" value="Register" id="btn_register">
+        </div>
+    </div>
 </div>
 </body>
 </html>
