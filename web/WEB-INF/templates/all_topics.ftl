@@ -64,15 +64,7 @@
 
         <div class="col-md-8">
             <form class="container">
-                <a name="text"> The main reason for going to university is to get an academic qualification, but
-                    personally, I think that the social side of things and developing as a person are equally important.
-                    The good thing about university life is that you are left to your own devices, unlike school, where
-                    you're told what to do and how to do it. It's important to socialise and meet new friends. lt takes
-                    some people longer than others. If a student has any problems, about anything, there's student
-                    counselling available at all universities, where they try and help out as much as possible. I've
-                    been a volunteer for our Student Counselling Scheme for some time now. I've found it very rewarding,
-                    not only with helping other students through university life but also as an extra-curricular
-                    activity. DATE ${item.getDate()}</a>
+                <a name="title"> TITLE DATE ${item.getDate()}</a>
             </form>
         </div>
             </#list>
