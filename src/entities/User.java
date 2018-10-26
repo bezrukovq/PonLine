@@ -17,6 +17,13 @@ public class User {
         this.description = description;
     }
 
+    public User(boolean admin, String name, String login, String description) {
+        this.admin = admin;
+        this.name = name;
+        this.login = login;
+        this.description = description;
+    }
+
     public User(int id, boolean admin, String name, String login, String password) {
         this.id = id;
         this.admin = admin;

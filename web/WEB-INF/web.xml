@@ -59,4 +59,12 @@
         <servlet-name>Post</servlet-name>
         <url-pattern>/post</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ToCheckList</servlet-name>
+        <servlet-class>servlets.ToCheckList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToCheckList</servlet-name>
+        <url-pattern>/tcheck</url-pattern>
+    </servlet-mapping>
 </web-app>

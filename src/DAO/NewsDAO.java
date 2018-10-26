@@ -12,4 +12,6 @@ public interface NewsDAO {
     ArrayList<String> getCategories(int id);
 
     News getNewsByID(int i);
+
+    ArrayList<News> getNewsforAdminList();
 }

@@ -30,27 +30,30 @@
         <div class="card" style="width: 18rem">
             <img name="avatar" class="card-img-top" src="../../front/src/img_avatar.png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title" id="NickName">Vovan1137</h5>
+                <h5 class="card-title" id="NickName">${user.getLogin()}</h5>
                 <p class="card-text" id="Email">vova@mail.ru</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="Name">Vova Bezrukov</li>
-                <li class="list-group-item" id="Region">Tatarstan</li>
+                <li class="list-group-item" id="Name">${user.getName()}</li>
+                <li class="list-group-item" id="Region">${user.getDescription()}</li>
             </ul>
             <div class="card-body" align="center">
                 <a href="#" class="card-link" id="Topics">Topics</a>
             </div>
+            <#if thisUser>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <input name="button" type="button" class="btn btn-info btn-block" value="Edit" id="btn_edit">
                 </li>
             </ul>
-
+            <#if user.isAdmin()>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <input name="button" type="button" class="btn btn-dark btn-block" value="Topics" id="btn_topics">
+                    <a href="/tcheck"> <input name="button" type="button" class="btn btn-dark btn-block" value="Topics" id="btn_topics"></a>
                 </li>
             </ul>
+            </#if>
+            </#if>
         </div>
 
 

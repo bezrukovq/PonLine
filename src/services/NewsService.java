@@ -24,4 +24,13 @@ public class NewsService {
         n.setCategories(newsDAO.getCategories(i));
         return n;
     }
+
+    public ArrayList<News> getNewsForAdminList() {
+        ArrayList<News> news = newsDAO.getNewsforAdminList();
+        for (News n : news){
+            n.setTags(newsDAO.getTags(n.getId()));
+            n.setCategories(newsDAO.getCategories(n.getId()));
+        }
+        return news;
+    }
 }

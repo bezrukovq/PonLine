@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class News {
     private int id;
+    private boolean accepted;
     private String crLogin;
     private String crname;
     private String crDesc;
@@ -34,8 +35,9 @@ public class News {
         this.date = date;
     }
 
-    public News(int id,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date) {
+    public News(int id,boolean accepted,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date) {
         this.id = id;
+        this.accepted = accepted;
         this.crLogin = crLogin;
         this.crname = crname;
         this.crDesc = crDesc;
@@ -75,6 +77,10 @@ public class News {
 
     public String getDate() {
         return date;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
     }
 
     public ArrayList<String> getTags() {

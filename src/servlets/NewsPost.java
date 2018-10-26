@@ -1,6 +1,7 @@
 package servlets;
 
 import entities.News;
+import entities.User;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -27,21 +28,45 @@ public class NewsPost extends HttpServlet {
         String user = (String) session.getAttribute("login");
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            //if (!Helper.logged(request,session,response)) {
-            Configuration cfg = Helper.getConfig(getServletContext());
-            Template tmpl = cfg.getTemplate("topic.ftl");
-            HashMap<String, Object> root = new HashMap<>();
             News news = Helper.getNewsService().getNewsByID(id);
-            root.put("form_url", request.getRequestURI());
-            root.put("news", news);
-            try {
-                tmpl.process(root, response.getWriter());
-            } catch (TemplateException e) {
-                e.printStackTrace();
+            if (news.isAccepted()) {
+                //if (!Helper.logged(request,session,response)) {
+                Configuration cfg = Helper.getConfig(getServletContext());
+                Template tmpl = cfg.getTemplate("topic.ftl");
+                HashMap<String, Object> root = new HashMap<>();
+                root.put("form_url", request.getRequestURI());
+                root.put("news", news);
+                try {
+                    tmpl.process(root, response.getWriter());
+                } catch (TemplateException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Helper.logged(request, session, response);
+                User cuser = (User) session.getAttribute("userClass");
+                if (user == null) {
+                    response.sendRedirect("/news");
+                } else {
+                    if (cuser == null) {
+                        response.sendRedirect("/profile?login=" + user);
+                    } else {
+                        if (cuser.isAdmin()) {
+                            Configuration cfg = Helper.getConfig(getServletContext());
+                            Template tmpl = cfg.getTemplate("new_topic_admin.ftl");
+                            HashMap<String, Object> root = new HashMap<>();
+                            root.put("form_url", request.getRequestURI());
+                            root.put("news", news);
+                            try {
+                                tmpl.process(root, response.getWriter());
+                            } catch (TemplateException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
             }
         } catch (java.lang.NumberFormatException e) {
             response.sendRedirect("/news");
         }
-        //  }
     }
 }

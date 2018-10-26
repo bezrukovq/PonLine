@@ -34,7 +34,7 @@ public class LogIn extends HttpServlet {
                         cookie.setMaxAge(60);
                         response.addCookie(cookie);
                     }
-                    response.sendRedirect("/main");
+                    response.sendRedirect("/news");
 
                 } else {
                     response.sendRedirect("/login");
@@ -48,7 +48,7 @@ public class LogIn extends HttpServlet {
         HttpSession session = request.getSession();
         String user = (String) session.getAttribute("login");
         if (user != null) {
-            response.sendRedirect("/main"); //зачем авторизованному логиниться
+            response.sendRedirect("/news"); //зачем авторизованному логиниться
         } else {
             if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());

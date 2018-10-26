@@ -23,4 +23,8 @@ public class UserService {
     public boolean isThere(String login){
         return userDAO.isThere(login);
     }
+
+    public User getUser(String login) {
+        return userDAO.getUser(login);
+    }
 }

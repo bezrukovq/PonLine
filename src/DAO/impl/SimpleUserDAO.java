@@ -49,4 +49,19 @@ public class SimpleUserDAO implements UserDAO {
         }
         return false;
     }
+
+    @Override
+    public User getUser(String login) {
+        try {
+            PreparedStatement st = connection.prepareStatement("select * from users where login=?");
+            st.setString(1,login);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            return new User(rs.getBoolean("admin"),rs.getString("name"),rs.getString("login"),rs.getString("description"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
