@@ -33,4 +33,13 @@ public class NewsService {
         }
         return news;
     }
+
+    public ArrayList<News> getNewsForUserList(String userToShow) {
+        ArrayList<News> news = newsDAO.getNewsforUserList(userToShow);
+        for (News n : news){
+            n.setTags(newsDAO.getTags(n.getId()));
+            n.setCategories(newsDAO.getCategories(n.getId()));
+        }
+        return news;
+    }
 }

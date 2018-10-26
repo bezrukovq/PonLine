@@ -92,4 +92,22 @@ public class SimpleNewsDAO implements NewsDAO {
 
         return newsList;
     }
+
+    @Override
+    public ArrayList<News> getNewsforUserList(String userToShow) {
+        ArrayList<News> newsList = new ArrayList<>();
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "select n.id, u.login, n.header, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and u.login=? order by n.id limit 5");
+            st.setString(1,userToShow);
+            ResultSet rs =st.executeQuery();
+            while (rs.next()){
+                newsList.add(new News(rs.getInt("id"),rs.getString("login"),rs.getString("header"),rs.getString("date")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return newsList;
+    }
 }

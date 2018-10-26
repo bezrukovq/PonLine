@@ -67,4 +67,12 @@
         <servlet-name>ToCheckList</servlet-name>
         <url-pattern>/tcheck</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>userPosts</servlet-name>
+        <servlet-class>servlets.UserPosts</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userPosts</servlet-name>
+        <url-pattern>/uposts</url-pattern>
+    </servlet-mapping>
 </web-app>

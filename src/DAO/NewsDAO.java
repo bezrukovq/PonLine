@@ -14,4 +14,6 @@ public interface NewsDAO {
     News getNewsByID(int i);
 
     ArrayList<News> getNewsforAdminList();
+
+    ArrayList<News> getNewsforUserList(String userToShow);
 }

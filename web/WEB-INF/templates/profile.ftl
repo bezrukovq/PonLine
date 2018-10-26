@@ -38,7 +38,7 @@
                 <li class="list-group-item" id="Region">${user.getDescription()}</li>
             </ul>
             <div class="card-body" align="center">
-                <a href="#" class="card-link" id="Topics">Topics</a>
+                <a href="/uposts?login=${user.getLogin()}" class="card-link" id="Topics">Topics</a>
             </div>
             <#if thisUser>
             <ul class="list-group list-group-flush">
