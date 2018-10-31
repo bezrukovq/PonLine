@@ -37,7 +37,7 @@ public class ToCheckList extends HttpServlet {
             } else {
                 if (cuser.isAdmin()) {
                     Configuration cfg = Helper.getConfig(getServletContext());
-                    Template tmpl = cfg.getTemplate("all_topics.html");
+                    Template tmpl = cfg.getTemplate("all_topics.ftl");
                     HashMap<String, Object> root = new HashMap<>();
                     ArrayList<News> news = Helper.getNewsService().getNewsForAdminList();
                     root.put("form_url", request.getRequestURI());

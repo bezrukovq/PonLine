@@ -28,7 +28,7 @@ public class UserPosts extends HttpServlet {
         String userToShow = (String)  request.getParameter("login");
         //if (!Helper.logged(request,session,response)) {
         Configuration cfg = Helper.getConfig(getServletContext());
-        Template tmpl = cfg.getTemplate("all_topics.html");
+        Template tmpl = cfg.getTemplate("all_topics.ftl");
         HashMap<String, Object> root = new HashMap<>();
         ArrayList<News> news = Helper.getNewsService().getNewsForUserList(userToShow);
         root.put("form_url", request.getRequestURI());

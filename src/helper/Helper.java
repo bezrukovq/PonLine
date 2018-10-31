@@ -62,9 +62,9 @@ public class Helper {
             }
             try {
                 connection = DriverManager.getConnection(
-                        "jdbc:postgresql://localhost:5432/ponline",
-                        "timurbadretdinov",
-                        "");
+                        "jdbc:postgresql://localhost:5432/PonLine",
+                        "postgres",
+                        "postgres");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

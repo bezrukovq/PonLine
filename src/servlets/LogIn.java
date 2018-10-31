@@ -26,7 +26,9 @@ public class LogIn extends HttpServlet {
         } else {
             Pattern pattern = Pattern.compile("^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\\d.-]{0,19}$");
             Matcher matcher = pattern.matcher(login);
-            if (matcher.matches()) {
+            Pattern p2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$");
+            Matcher m2 = pattern.matcher(passw);
+            if (matcher.matches()&& m2.matches() ) {
                 if(Helper.getUserService().exist(login, passw)) {
                     session.setAttribute("login", login);
                     if(remember!=null) {
@@ -52,7 +54,7 @@ public class LogIn extends HttpServlet {
         } else {
             if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("login.ftl");
+                Template tmpl = cfg.getTemplate("LogIn.html");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 try {
