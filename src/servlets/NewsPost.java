@@ -32,7 +32,7 @@ public class NewsPost extends HttpServlet {
             if (news.isAccepted()) {
                 //if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("topic.ftl");
+                Template tmpl = cfg.getTemplate("topic.html");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 root.put("news", news);
@@ -52,7 +52,7 @@ public class NewsPost extends HttpServlet {
                     } else {
                         if (cuser.isAdmin()) {
                             Configuration cfg = Helper.getConfig(getServletContext());
-                            Template tmpl = cfg.getTemplate("new_topic_admin.ftl");
+                            Template tmpl = cfg.getTemplate("new_topic_admin.html");
                             HashMap<String, Object> root = new HashMap<>();
                             root.put("form_url", request.getRequestURI());
                             root.put("news", news);

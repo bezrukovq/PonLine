@@ -31,7 +31,7 @@ public class Profile extends HttpServlet {
         } else {
             String userToShow =(String) request.getParameter("login");
             Configuration cfg = Helper.getConfig(getServletContext());
-            Template tmpl = cfg.getTemplate("profile.ftl");
+            Template tmpl = cfg.getTemplate("profile.html");
             HashMap<String, Object> root = new HashMap<>();
             root.put("form_url", request.getRequestURI());
             root.put("thisUser", userToShow.equals(user));

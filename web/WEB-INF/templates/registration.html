@@ -27,13 +27,13 @@
     <form method="post" role="form">
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6" align="center">
                 <img name="avatar" src="../../front/src/img_avatar.png" class="closePic" width="150" height="150">
                 <br>
-                <input style="margin-top: 20px" id="avatarSelect" type="file" name="file"/>
+                <input style="margin-top: 20px; margin-left: 100px" id="avatarSelect" type="file" name="file"/>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group has-error">
                     <label for="login">Login*</label>
                     <input name="login" type="text" class="form-control" id="login" placeholder="Login"
@@ -51,19 +51,6 @@
                     <input name="password" type="password" class="form-control" id="password" placeholder="Password"
                            required="required"/>
                 </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="name">Ne nado</label>
-                    <input name="name" type="text" class="form-control" id="name2" placeholder="Name"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname">Surname</label>
-                    <input name="surname" type="text" class="form-control" id="surname" placeholder="Surname"/>
-                </div>
 
                 <div class="form-group">
                     <label for="region">Region</label>
@@ -74,6 +61,7 @@
             <div class="col-md-4">
                 <br>
             </div>
+
             <input name="button" type="submit" class="btn btn-primary btn-block" value="Register" id="btn_register">
         </div>
     </form>

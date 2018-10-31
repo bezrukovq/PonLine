@@ -27,28 +27,28 @@
     <div class="row">
         <div class="col-md-6">
             <form role="form">
-                <div class="form-group">
-                    <label for="themes">Select themes</label>
-                    <select multiple class="form-control" id="themes" name="themes">
-                        <option>World</option>
-                        <option>Politic</option>
-                        <option>Study</option>
-                        <option>Space</option>
-                        <option>Tim_baton</option>
-                    </select>
-                </div>
+                <!--<div class="form-group">-->
+                <!--<label for="themes">Select themes</label>-->
+                <!--<select multiple class="form-control" id="themes" name="themes">-->
+                <!--<option>World</option>-->
+                <!--<option>Politic</option>-->
+                <!--<option>Study</option>-->
+                <!--<option>Space</option>-->
+                <!--<option>Tim_baton</option>-->
+                <!--</select>-->
+                <!--</div>-->
 
 
-                <div class="form-group">
-                    <label for="curTopics">Current themes topics</label>
-                    <select multiple class="form-control" id="curTopics" name="curTopics">
-                        <option>
-                            <a href="vk.com/tim_baron">A new animal founded!</a>
-                        </option>
-                        <option>Vova is a gay!!</option>
-                        <option>Timur is the boss!!</option>
-                    </select>
-                </div>
+                <!--<div class="form-group">-->
+                <!--<label for="curTopics">Current themes topics</label>-->
+                <!--<select multiple class="form-control" id="curTopics" name="curTopics">-->
+                <!--<option>-->
+                <!--<a href="vk.com/tim_baron">A new animal founded!</a>-->
+                <!--</option>-->
+                <!--<option>Vova is a gay!!</option>-->
+                <!--<option>Timur is the boss!!</option>-->
+                <!--</select>-->
+                <!--</div>-->
             </form>
         </div>
 
@@ -56,14 +56,16 @@
             <form role="form">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <textarea class="form-control" id="title" rows="3" placeholder="Title" name="title">
+                    <textarea required="required" class="form-control" id="title" rows="3" placeholder="Title"
+                              name="title">
                     </textarea>
 
                 </div>
 
                 <div class="form-group">
                     <label for="text">Text</label>
-                    <textarea class="form-control" id="text" rows="5" placeholder="Text" name="text">
+                    <textarea class="form-control" required="required" id="text" rows="5" placeholder="Text"
+                              name="text">
                     </textarea>
                 </div>
 
@@ -71,15 +73,10 @@
                     <label for="attach">Attach images</label>
                     <input type="file" class="form-control-file" id="attach" name="attach">
                 </div>
+
+                <input type="submit" class="btn btn-primary btn-block" value="Send" id="btn_register">
+
             </form>
-        </div>
-
-        <div class="col-md-12">
-            <br>
-        </div>
-
-        <div class="col-md-12" align="center">
-            <input type="button" class="btn btn-primary btn-block" value="Send" id="btn_register">
         </div>
     </div>
 </div>

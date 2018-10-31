@@ -52,7 +52,7 @@ public class LogIn extends HttpServlet {
         } else {
             if (!Helper.logged(request,session,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
-                Template tmpl = cfg.getTemplate("login.html");
+                Template tmpl = cfg.getTemplate("login.ftl");
                 HashMap<String, Object> root = new HashMap<>();
                 root.put("form_url", request.getRequestURI());
                 try {

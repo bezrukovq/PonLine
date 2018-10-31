@@ -21,30 +21,33 @@
 
     <br>
     <div class="row">
-        <div class="col-md-12">
-            <form role="form" method="post" class="form-horizontal">
-                <div class="form-group has-error">
-                    <label for="login">Login</label>
-                    <input id="login" type="text" class="form-control" name="login" placeholder="Login"/>
-                </div>
+        <form role="form" method="post" class="form-horizontal">
+            <div class="form-group has-error">
+                <label for="login">Login</label>
+                <input id="login" type="text" class="form-control" name="login" placeholder="Login"
+                       required="required"/>
+            </div>
 
-                <div class="form-group">
-                    <label for="pass">Password</label>
-                    <input id="pass" type="password" class="form-control" name="password" placeholder="Password"/>
-                </div>
-        </div>
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input id="pass" type="password" class="form-control" name="password" placeholder="Password"
+                       required="required"/>
+            </div>
 
-        <div class="col-md-12">
-            <br>
-        </div>
 
-        <div class="col-md-12" align="center">
-            <input type="submit" class="btn btn-primary btn-block" value="Enter" id="btn_enter">
-        </div>
-        <center style="color: white;">Remember me<input class="c" type="checkbox" name="remember"/></center>
+            <div>
+                <input name="enter" type="submit" class="btn btn-primary btn-block" value="enter"
+                       id="btn_enter" required="required">
+                <br>
+            </div>
 
+            <div>
+                <input class="form-check-input" name="isRemembered" type="checkbox" aria-label="Checkbox for following text input" id="check">
+                <label for="check">
+                    Remember me!
+                </label>
+            </div>
         </form>
-
     </div>
 </div>
 

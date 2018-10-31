@@ -27,7 +27,7 @@ public class NewsList extends HttpServlet {
         String user = (String) session.getAttribute("login");
         //if (!Helper.logged(request,session,response)) {
         Configuration cfg = Helper.getConfig(getServletContext());
-        Template tmpl = cfg.getTemplate("all_topics.ftl");
+        Template tmpl = cfg.getTemplate("all_topics.html");
         HashMap<String, Object> root = new HashMap<>();
         ArrayList<News> news = Helper.getNewsService().getNewsForList();
         root.put("form_url", request.getRequestURI());
