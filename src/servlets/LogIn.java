@@ -27,7 +27,7 @@ public class LogIn extends HttpServlet {
             Pattern pattern = Pattern.compile("^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\\d.-]{0,19}$");
             Matcher matcher = pattern.matcher(login);
             Pattern p2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$");
-            Matcher m2 = pattern.matcher(passw);
+            Matcher m2 = p2.matcher(passw);
             if (matcher.matches()&& m2.matches() ) {
                 if(Helper.getUserService().exist(login, passw)) {
                     session.setAttribute("login", login);

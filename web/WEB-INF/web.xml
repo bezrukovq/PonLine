@@ -75,4 +75,12 @@
         <servlet-name>userPosts</servlet-name>
         <url-pattern>/uposts</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>NewPost</servlet-name>
+        <servlet-class>servlets.NewsPost</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewPost</servlet-name>
+        <url-pattern>/newpost</url-pattern>
+    </servlet-mapping>
 </web-app>

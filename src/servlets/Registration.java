@@ -29,7 +29,7 @@ public class Registration extends HttpServlet {
             Pattern pattern = Pattern.compile("^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\\d.-]{0,19}$");
             Matcher matcher = pattern.matcher(login);
             Pattern p2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$");
-            Matcher m2 = pattern.matcher(password);
+            Matcher m2 = p2.matcher(password);
             if (matcher.matches()&& m2.matches() ){
                 if (!userService.isThere(login)) {
                     userService.registerNewUser(name, login, password, desc);

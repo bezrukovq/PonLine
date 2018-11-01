@@ -18,8 +18,8 @@
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" style="background: #e7e7e7">
     <div class="container">
-        <button name="main" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Main</button>
-        <button name="new_topic" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Create
+        <button name="main" onclick="document.location='/news'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Main</button>
+        <button name="new_topic" onclick="document.location='/newpost'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Create
             topic
         </button>
 
@@ -29,7 +29,6 @@
                aria-expanded="false">Profile <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="/profile" name="profile">My profile</a></li>
-                <li><a href="/registration" name="settings">Settings</a></li>
                 <li><a href="/login" name="quit">Quit</a></li>
             </ul>
         </li>
