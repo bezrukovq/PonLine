@@ -22,16 +22,15 @@
 
     <form>
         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary dropdown-toggle" name="filter" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Фильтр</a>
-                    <a class="dropdown-item" href="#">Another Фильтр</a>
-                    <a class="dropdown-item" href="#">Something Фильтр</a>
-                    <a class="dropdown-item" href="#">Separated Фильтр</a>
-                </div>
-            </div>
             <input name="search" type="text" class="form-control" aria-label="Text input with dropdown button">
+            <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option name="default" value="null">Philter</option>
+                    <option name="politics" value="politics">Politics</option>
+                    <option name="nature" value="nature">Nature</option>
+                    <option name="celebrities" value="celebrities">Celebrities</option>
+                </select>
+            </div>
         </div>
     </form>
     <div class="row">
