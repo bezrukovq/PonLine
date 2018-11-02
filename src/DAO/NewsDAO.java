@@ -1,5 +1,6 @@
 package DAO;
 
+import entities.Comment;
 import entities.News;
 
 import java.util.ArrayList;
@@ -22,4 +23,6 @@ public interface NewsDAO {
     void deleteNews(int id);
 
     void acceptNews(int id);
+
+    void comment(Comment comment);
 }

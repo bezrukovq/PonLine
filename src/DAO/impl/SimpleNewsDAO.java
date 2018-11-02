@@ -1,6 +1,7 @@
 package DAO.impl;
 
 import DAO.NewsDAO;
+import entities.Comment;
 import entities.News;
 import entities.Topic;
 import helper.Helper;
@@ -148,5 +149,19 @@ public class SimpleNewsDAO implements NewsDAO {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void comment(Comment comment) {
+        try {
+            PreparedStatement st = conn.prepareStatement("insert into comment(sender_id, date, text, news_id) VALUES ((select id from users where login=?),?,?,?)");
+            st.setString(1,comment.getCrLogin());
+            st.setString(2,comment.getDate());
+            st.setString(3,comment.getText());
+            st.setInt(4,comment.getNews_id());
+            st.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,6 +2,7 @@ package services;
 
 import DAO.NewsDAO;
 import DAO.impl.SimpleNewsDAO;
+import entities.Comment;
 import entities.News;
 
 import java.util.ArrayList;
@@ -53,5 +54,9 @@ public class NewsService {
 
     public void acceptNews(int id) {
         newsDAO.acceptNews(id);
+    }
+
+    public void comment(Comment comment) {
+        newsDAO.comment(comment);
     }
 }

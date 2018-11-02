@@ -1,5 +1,6 @@
 package helper;
 
+import entities.Comment;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import services.NewsService;
@@ -17,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Helper {
     private static Configuration cfg = null;
@@ -109,4 +111,6 @@ public class Helper {
 
         return md5Hex;
     }
+
+
 }

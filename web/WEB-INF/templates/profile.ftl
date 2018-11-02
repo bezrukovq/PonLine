@@ -16,13 +16,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <#include 'navbar.html'>
 
 <div class="container" align="center">
     <h1 align="center">
         Profile
     </h1>
-
-    <br>
 
     <form role="form">
 
@@ -31,7 +30,6 @@
             <img name="avatar" class="card-img-top" src="../../front/src/img_avatar.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" id="NickName">${user.getLogin()}</h5>
-                <p class="card-text" id="Email">vova@mail.ru</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" id="Name">${user.getName()}</li>

@@ -19,6 +19,7 @@
 
 </head>
 <body>
+    <#include 'navbar.html'>
 
 <div class="container">
 
@@ -42,39 +43,25 @@
 
                 <div class="actionBox">
                     <ul class="commentList">
+                        <#if comments?has_content>
+                        <#list comments as c>
                         <li>
                             <div class="commenterImage">
                                 <img src="http://placekitten.com/50/50"/>
                             </div>
                             <div class="commentText">
-                                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                <h6>${c.getCrLogin()}</h6>
+                                <p class="">${c.getText()}</p> <span class="date sub-text">${c.getDate()}</span>
 
                             </div>
                         </li>
-                        <li>
-                            <div class="commenterImage">
-                                <img src="http://placekitten.com/45/45"/>
-                            </div>
-                            <div class="commentText">
-                                <p class="">Hello this is a test comment and this comment is particularly very long and
-                                    it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                            </div>
-                        </li>
-                        <li>
-                            <div class="commenterImage">
-                                <img src="http://placekitten.com/40/40"/>
-                            </div>
-                            <div class="commentText">
-                                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                            </div>
-                        </li>
+                        </#list>
+                            </#if>
                     </ul>
-
-                    <form class="form-inline" role="form">
+                    <#if logged>
+                    <form class="form-inline" method="post" role="form">
                         <div class="form-group">
-                            <input name="form_comment" class="form-control" type="text" placeholder="Your comment" required="required"/>
+                            <input name="comment" class="form-control" type="text" placeholder="Your comment" required="required"/>
                         </div>
                         <div class="form-group">
                             <input name="btn_comment" type="submit" class="btn btn-primary" value="add"
@@ -82,6 +69,7 @@
                             <br>
                         </div>
                     </form>
+                    </#if>
                 </div>
             </div>
 

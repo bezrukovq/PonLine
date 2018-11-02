@@ -1,10 +1,12 @@
 package DAO.impl;
 
 import DAO.UserDAO;
+import entities.Comment;
 import entities.User;
 import helper.Helper;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SimpleUserDAO implements UserDAO {
     Connection connection= Helper.getConnection();
@@ -63,5 +65,22 @@ public class SimpleUserDAO implements UserDAO {
         }
 
         return null;
+    }
+
+    @Override
+    public ArrayList<Comment> getComments(int id) {
+        ArrayList<Comment> comments = new ArrayList<>();
+        PreparedStatement st = null;
+        try {
+            st = connection.prepareStatement("select * from comment inner join users on comment.sender_id = users.id where news_id=? order by comment.id");
+            st.setInt(1,id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                comments.add(new Comment(rs.getString("name"),rs.getString("date"),rs.getString("text"),id));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return comments;
     }
 }

@@ -37,7 +37,7 @@ public class NewPost extends HttpServlet {
             response.sendRedirect("/news");
         } else {
             Configuration cfg = Helper.getConfig(getServletContext());
-            Template tmpl = cfg.getTemplate("new_topic.html");
+            Template tmpl = cfg.getTemplate("new_topic.ftl");
             HashMap<String, Object> root = new HashMap<>();
             root.put("form_url", request.getRequestURI());
             try {

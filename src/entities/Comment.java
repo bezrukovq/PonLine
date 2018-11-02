@@ -4,14 +4,18 @@ public class Comment {
     private String crLogin;
     private String crname;
     private String crDesc;
+    private int news_id;
     private String date;
     private String text;
 
-    public Comment(String crLogin, String crname, String crDesc, String date, String text) {
+    public int getNews_id() {
+        return news_id;
+    }
+
+    public Comment(String crLogin, String date, String text, int news_id) {
         this.crLogin = crLogin;
-        this.crname = crname;
-        this.crDesc = crDesc;
         this.date = date;
+        this.news_id = news_id;
         this.text = text;
     }
 
