@@ -110,4 +110,43 @@ public class SimpleNewsDAO implements NewsDAO {
 
         return newsList;
     }
+
+    @Override
+    public void addPost(News news) {
+        try {
+            PreparedStatement st = conn.prepareStatement("insert into news(author_id, topic_id, header, text, accepted, date) VALUES ((select id from users where login = ?),1,?,?,false ,?)");
+            st.setString(1,news.getCrLogin());
+            st.setString(2,news.getHeader());
+            st.setString(3,news.getText());
+            st.setString(4,news.getDate());
+            st.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteNews(int id) {
+        try {
+            PreparedStatement st = conn.prepareStatement("delete from news where id=?");
+            st.setInt(1,id);
+            st.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void acceptNews(int id) {
+        try {
+            PreparedStatement st = conn.prepareStatement("update news set accepted=true where id=?");
+            st.setInt(1,id);
+            st.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

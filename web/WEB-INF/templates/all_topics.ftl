@@ -17,6 +17,7 @@
 </head>
 <body>
 
+    <#include 'navbar.html'>
 <div class="container">
     <br>
 

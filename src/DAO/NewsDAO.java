@@ -16,4 +16,10 @@ public interface NewsDAO {
     ArrayList<News> getNewsforAdminList();
 
     ArrayList<News> getNewsforUserList(String userToShow);
+
+    void addPost(News news);
+
+    void deleteNews(int id);
+
+    void acceptNews(int id);
 }

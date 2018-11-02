@@ -50,7 +50,7 @@ public class Registration extends HttpServlet {
         if (user != null) {
             response.sendRedirect("/main"); //зачем авторизованному логиниться
         } else {
-            if (!Helper.logged(request,session,response)) {
+            if (!Helper.logged(request,response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
                 Template tmpl = cfg.getTemplate("registration.html");
                 HashMap<String, Object> root = new HashMap<>();

@@ -42,4 +42,16 @@ public class NewsService {
         }
         return news;
     }
+
+    public void addPost(News news) {
+        newsDAO.addPost(news);
+    }
+
+    public void deleteNews(int id) {
+        newsDAO.deleteNews(id);
+    }
+
+    public void acceptNews(int id) {
+        newsDAO.acceptNews(id);
+    }
 }

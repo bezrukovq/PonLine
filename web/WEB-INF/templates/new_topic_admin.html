@@ -22,9 +22,15 @@
 
     <div class="row">
         <div class="col-md-4" align="center">
-            <button type="submit" class="btn btn-outline-success btn-lg">Accept</button>
+            <form method="post">
+                <label for="accept">Accept</label>
+                <input id="accept" required name="two" type="radio" class="btn btn-outline-success btn-lg" value="Accept"/>
             <br>
-            <button type="submit" class="btn btn-outline-danger">Deny</button>
+                <label for="deny">Deny</label>
+                <input id="deny" name="two" required type="radio" class="btn btn-outline-danger" value="Deny"/>
+                <br>
+                <input name="submit" type="submit" class="btn btn-outline-success btn-lg" value="Submit"/>
+            </form>
         </div>
 
 

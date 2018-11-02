@@ -23,7 +23,7 @@ public class Welcome extends javax.servlet.http.HttpServlet {
         if (user != null) {
             response.sendRedirect("/main"); //зачем авторизованному логиниться
         } else {
-            if (!Helper.logged(request,session,response)) {
+            if (!Helper.logged(request,response)) {
                 response.setContentType("text/html");
                 Configuration cfg = Helper.getConfig(getServletContext());
                 Template tmpl = cfg.getTemplate("greeting.html");

@@ -37,7 +37,7 @@ public class Helper {
         return newsService;
     }
 
-    public static boolean logged(HttpServletRequest request, HttpSession session, HttpServletResponse response){
+    public static boolean logged(HttpServletRequest request, HttpServletResponse response){
         String login = "";
         boolean hasCookies = false;
         Cookie[] cookies = request.getCookies();
@@ -46,7 +46,7 @@ public class Helper {
                 if (cookie.getName().equals("login")) {
                     login = cookie.getValue();
                     hasCookies= true;
-                    session.setAttribute("login", login);
+                    request.getSession().setAttribute("login", login);
                 }
             }
         }

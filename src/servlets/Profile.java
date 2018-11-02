@@ -24,7 +24,7 @@ public class Profile extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        Helper.logged(request, session, response);
+        Helper.logged(request, response);
         String user = (String) session.getAttribute("login");
         if (user == null) {
             response.sendRedirect("/news");

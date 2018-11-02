@@ -16,6 +16,13 @@ public class News {
     private ArrayList<String> categories;
     private ArrayList<String> files;
 
+    public News(String title, String text, String user, String date) {
+        this.header = title;
+        this.text = text;
+        this.crLogin = user;
+        this.date = date;
+    }
+
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }

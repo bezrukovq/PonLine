@@ -19,7 +19,15 @@ import java.util.HashMap;
 
 public class NewsPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        String status = request.getParameter("two");
+        int id = Integer.parseInt(request.getParameter("id"));
+        if(status.equals("Deny")){
+            Helper.getNewsService().deleteNews(id);
+        } else {
+            Helper.getNewsService().acceptNews(id);
+        }
+        response.sendRedirect("/tcheck");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +50,7 @@ public class NewsPost extends HttpServlet {
                     e.printStackTrace();
                 }
             } else {
-                Helper.logged(request, session, response);
+                Helper.logged(request, response);
                 User cuser = (User) session.getAttribute("userClass");
                 if (user == null) {
                     response.sendRedirect("/news");
