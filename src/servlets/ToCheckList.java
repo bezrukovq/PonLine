@@ -41,6 +41,7 @@ public class ToCheckList extends HttpServlet {
                     HashMap<String, Object> root = new HashMap<>();
                     ArrayList<News> news = Helper.getNewsService().getNewsForAdminList();
                     root.put("form_url", request.getRequestURI());
+                    root.put("all", false);
                     root.put("news", news);
                     try {
                         tmpl.process(root, response.getWriter());

@@ -75,4 +75,12 @@
         <servlet-name>NewPost</servlet-name>
         <url-pattern>/newpost</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>search</servlet-name>
+        <servlet-class>servlets.Searchservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>search</servlet-name>
+        <url-pattern>/searchserv</url-pattern>
+    </servlet-mapping>
 </web-app>

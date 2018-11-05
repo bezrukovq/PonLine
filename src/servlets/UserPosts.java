@@ -32,6 +32,7 @@ public class UserPosts extends HttpServlet {
         HashMap<String, Object> root = new HashMap<>();
         ArrayList<News> news = Helper.getNewsService().getNewsForUserList(userToShow);
         root.put("form_url", request.getRequestURI());
+        root.put("all", false);
         root.put("news",news);
         try {
             tmpl.process(root, response.getWriter());

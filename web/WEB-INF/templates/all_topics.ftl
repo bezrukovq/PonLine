@@ -20,13 +20,13 @@
     <#include 'navbar.html'>
 <div class="container">
     <br>
-
-    <form>
+<#if all>
+    <form method="post">
         <div class="input-group mb-3">
-            <input name="search" type="text" class="form-control" aria-label="Text input with dropdown button">
+            <input name="search" required type="text" class="form-control" aria-label="Text input with dropdown button">
             <div class="form-group">
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option name="default" value="null">Philter</option>
+                <select class="form-control" name="filter" id="filter">
+                    <option name="default" value="null">No Filter</option>
                     <option name="politics" value="politics">Politics</option>
                     <option name="nature" value="nature">Nature</option>
                     <option name="celebrities" value="celebrities">Celebrities</option>
@@ -34,6 +34,8 @@
             </div>
         </div>
     </form>
+</#if>
+
     <div class="row">
         <#if news?has_content>
             <#list news as item>
@@ -70,7 +72,7 @@
 
         <div class="col-md-8">
             <form class="container">
-                <a name="title"> TITLE DATE ${item.getDate()}</a>
+                <a name="title">${item.getDate()}</a>
             </form>
         </div>
             </#list>

@@ -18,7 +18,9 @@ import java.util.HashMap;
 
 public class NewsList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    HttpSession session = request.getSession();
+        System.out.println((String) request.getParameter("filter"));
+        //filter-> value in ftl
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +33,7 @@ public class NewsList extends HttpServlet {
         HashMap<String, Object> root = new HashMap<>();
         ArrayList<News> news = Helper.getNewsService().getNewsForList();
         root.put("form_url", request.getRequestURI());
+        root.put("all", true);
         root.put("news",news);
         try {
             tmpl.process(root, response.getWriter());

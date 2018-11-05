@@ -33,4 +33,8 @@ public class UserService {
     public  ArrayList<Comment> getComments(int id) {
         return userDAO.getComments(id);
     }
+
+    public ArrayList<String> getLikeUsers(String q) {
+        return userDAO.getLikeUsers(q);
+    }
 }

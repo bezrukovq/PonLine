@@ -13,4 +13,6 @@ public interface UserDAO {
     User getUser(String login);
 
     ArrayList<Comment> getComments(int id);
+
+    ArrayList<String> getLikeUsers(String q);
 }

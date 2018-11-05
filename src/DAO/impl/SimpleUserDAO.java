@@ -83,4 +83,21 @@ public class SimpleUserDAO implements UserDAO {
         }
         return comments;
     }
+
+    @Override
+    public ArrayList<String> getLikeUsers(String q) {
+        ArrayList<String> logins= new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement("select login from users where login like ? or name like ?");
+            st.setString(1,q);
+            st.setString(2,q);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                logins.add(rs.getString("login"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logins;
+    }
 }

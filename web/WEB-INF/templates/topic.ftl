@@ -33,7 +33,7 @@
             </form>
             <br>
             <form class="container">
-                <a href="/profile?login=${news.getCrLogin()}" id="link" name="linkg">${news.getCrname()}</a>
+                <a href="/profile?login=${news.getCrLogin()}" id="link" name="linkg">${news.getCrLogin()}</a>
             </form>
 
             <div class="detailBox">
