@@ -173,11 +173,11 @@ public class SimpleNewsDAO implements NewsDAO {
         try {
             if(filter!=0) {
                 st = conn.prepareStatement(
-                        "select n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and (n.header like ?) and n.category=?  order by n.id limit 5");
+                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and (n.header like ?) and n.category=?  order by n.id limit 5");
                 st.setInt(2, filter);
             } else {
                 st = conn.prepareStatement(
-                        "select n.id, u.login,u.picpath, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and n.header like ? order by n.id limit 5");
+                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and n.header like ? order by n.id limit 5");
             }
             st.setString(1, "%" + s + "%");
             ResultSet rs =st.executeQuery();
