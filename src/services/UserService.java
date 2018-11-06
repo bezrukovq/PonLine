@@ -19,7 +19,11 @@ public class UserService {
     public boolean registerNewUser(String name, String login, String password, String description,String fileName){
         password = Helper.md5Custom(password);
         User u = new User(false,name,login,password,description);
-        u.setPicPath(fileName);
+        if(fileName!= null) {
+            u.setPicPath(fileName);
+        } else {
+            u.setPicPath("../../front/src/img_avatar.png");
+        }
         return userDAO.addNewUser(u);
     }
     public boolean isThere(String login){
