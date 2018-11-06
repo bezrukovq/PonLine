@@ -27,7 +27,7 @@
 
 
         <div class="card" style="width: 18rem">
-            <img name="avatar" class="card-img-top" src="../../front/src/img_avatar.png" alt="Card image cap">
+            <img name="avatar" class="card-img-top" src="${user.getPicPath()}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" id="NickName">${user.getLogin()}</h5>
             </div>

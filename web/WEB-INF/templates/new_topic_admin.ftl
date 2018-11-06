@@ -42,14 +42,7 @@
 
             <form class="container" ali>
                 <h6>
-                    <#list news.getTags() as tag>
-                        <div align="center">${tag}</div>
-                    </#list>
-                </h6>
-                <h6>
-                    <#list news.getCategories() as tag>
-                        <div align="center">${tag}</div>
-                    </#list>
+                    ${news.getCategory()}
                 </h6>
 
             </form>
@@ -63,7 +56,7 @@
             <br>
 
             <form class="container">
-                <img name="image" src="../../front/src/img_avatar.png" class="closePic" width="100"
+                <img name="image" src="${news.getuPicPath()}" class="closePic" width="100"
                      height="100">
             </form>
 

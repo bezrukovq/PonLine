@@ -23,13 +23,14 @@
 <#if all>
     <form method="post">
         <div class="input-group mb-3">
-            <input name="search" required type="text" class="form-control" aria-label="Text input with dropdown button">
+            <input name="search" type="text" class="form-control" aria-label="Text input with dropdown button">
             <div class="form-group">
                 <select class="form-control" name="filter" id="filter">
-                    <option name="default" value="null">No Filter</option>
-                    <option name="politics" value="politics">Politics</option>
-                    <option name="nature" value="nature">Nature</option>
-                    <option name="celebrities" value="celebrities">Celebrities</option>
+                    <option name="default" value="0">No Filter</option>
+                    <option name="default" value="1">No Category</option>
+                    <option name="politics" value="2">Politics</option>
+                    <option name="nature" value="3">Nature</option>
+                    <option name="celebrities" value="4">Celebrities</option>
                 </select>
             </div>
         </div>
@@ -41,7 +42,7 @@
             <#list news as item>
         <div class="col-md-1.2">
             <form class="container">
-                <img src="../../front/src/img_avatar.png" class="closePic" width="100"
+                <img src="${item.getuPicPath()}" class="closePic" width="100"
                      height="100">
             </form>
 
@@ -58,14 +59,7 @@
             <form class="container">
                 <a href="/post?id=${item.getId()}"> <h5 name="title">${item.getHeader()}</h5></a>
                 <h6>
-                    <#list item.getTags() as tag>
-                    ${tag},
-                    </#list>
-                </h6>
-                <h6>
-                    <#list item.getCategories() as tag>
-                        ${tag},
-                    </#list>
+                    ${item.getCategory()}
                 </h6>
             </form>
         </div>

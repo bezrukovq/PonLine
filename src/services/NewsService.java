@@ -13,7 +13,6 @@ public class NewsService {
         ArrayList<News> news = newsDAO.getNewsforList();
         for (News n : news){
             n.setTags(newsDAO.getTags(n.getId()));
-            n.setCategories(newsDAO.getCategories(n.getId()));
         }
         return news;
     }
@@ -22,7 +21,6 @@ public class NewsService {
         News n = newsDAO.getNewsByID(i);
         //n.setFiles(newsDAO.getFiles(i));
         n.setTags(newsDAO.getTags(i));
-        n.setCategories(newsDAO.getCategories(i));
         return n;
     }
 
@@ -30,7 +28,6 @@ public class NewsService {
         ArrayList<News> news = newsDAO.getNewsforAdminList();
         for (News n : news){
             n.setTags(newsDAO.getTags(n.getId()));
-            n.setCategories(newsDAO.getCategories(n.getId()));
         }
         return news;
     }
@@ -39,7 +36,6 @@ public class NewsService {
         ArrayList<News> news = newsDAO.getNewsforUserList(userToShow);
         for (News n : news){
             n.setTags(newsDAO.getTags(n.getId()));
-            n.setCategories(newsDAO.getCategories(n.getId()));
         }
         return news;
     }
@@ -58,5 +54,9 @@ public class NewsService {
 
     public void comment(Comment comment) {
         newsDAO.comment(comment);
+    }
+
+    public ArrayList<News> getNewsForListWithFilter(String filter,String s) {
+        return newsDAO.getNewsforListWithFilter(filter,s);
     }
 }

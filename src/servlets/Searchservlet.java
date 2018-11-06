@@ -17,13 +17,14 @@ import java.util.ArrayList;
 public class Searchservlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String q = request.getParameter("q");
-        ArrayList<String> users = Helper.getUserService().getLikeUsers(q);
+        ArrayList<User> users = Helper.getUserService().getLikeUsers(q);
         JSONArray ja = new JSONArray();
 
-        for(String b: users) {
+        for(User b: users) {
             JSONObject name = new JSONObject();
             try {
-                name.put("nam",b);
+                name.put("nam",b.getLogin());
+                name.put("path", b.getPicPath());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

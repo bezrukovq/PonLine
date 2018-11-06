@@ -24,15 +24,14 @@
 
     <br>
 
-    <form method="post" role="form">
+    <form method="post" role="form" enctype="multipart/form-data">
 
         <div class="row">
             <div class="col-md-6" align="center">
                 <img name="avatar" src="../../front/src/img_avatar.png" class="closePic" width="150" height="150">
                 <br>
-                <input style="margin-top: 20px; margin-left: 100px" id="avatarSelect" type="file" name="file"/>
+                <input required style="margin-top: 20px; margin-left: 100px" id="file" type="file" accept="image/jpeg, image/png, image/jpg" name="file"/>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group has-error">
                     <label for="login">Login*</label>

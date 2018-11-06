@@ -7,7 +7,18 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private String picPath;
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
+    }
+
     private String description;
+
+    public User(String login, String picPath) {
+        this.login = login;
+        this.picPath = picPath;
+    }
 
     public User(boolean admin, String name, String login, String password, String description) {
         this.admin = admin;
@@ -54,5 +65,9 @@ public class User {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getPicPath() {
+        return picPath;
     }
 }

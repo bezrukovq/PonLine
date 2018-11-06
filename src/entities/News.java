@@ -8,12 +8,13 @@ public class News {
     private String crLogin;
     private String crname;
     private String crDesc;
+    private String uPicPath;
     private Topic topic;
     private String header;
     private String text;
     private String date;
     private ArrayList<String> tags;
-    private ArrayList<String> categories;
+    private String category;
     private ArrayList<String> files;
 
     public News(String title, String text, String user, String date) {
@@ -27,23 +28,23 @@ public class News {
         this.tags = tags;
     }
 
-    public void setCategories(ArrayList<String> categories) {
-        this.categories = categories;
-    }
 
     public void setFiles(ArrayList<String> files) {
         this.files = files;
     }
 
-    public News(int id, String crLogin, String header, String date) {
+    public News(int id, String crLogin, String header, String date,String category,String uPicPath) {
         this.id = id;
+        this.category = category;
         this.crLogin = crLogin;
         this.header = header;
         this.date = date;
+        this.uPicPath = uPicPath;
     }
 
-    public News(int id,boolean accepted,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date) {
+    public News(int id,boolean accepted,String crLogin, String crname, String crDesc, Topic topic, String header, String text, String date,String uPicPath,String category) {
         this.id = id;
+        this.category = category;
         this.accepted = accepted;
         this.crLogin = crLogin;
         this.crname = crname;
@@ -52,6 +53,7 @@ public class News {
         this.header = header;
         this.text = text;
         this.date = date;
+        this.uPicPath = uPicPath;
     }
 
     public int getId() {
@@ -94,11 +96,15 @@ public class News {
         return tags;
     }
 
-    public ArrayList<String> getCategories() {
-        return categories;
+    public String getuPicPath() {
+        return uPicPath;
     }
 
     public ArrayList<String> getFiles() {
         return files;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

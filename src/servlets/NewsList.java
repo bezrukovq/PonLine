@@ -18,9 +18,22 @@ import java.util.HashMap;
 
 public class NewsList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    HttpSession session = request.getSession();
-        System.out.println((String) request.getParameter("filter"));
+        String filter = (String) request.getParameter("filter");
+        String s =(String) request.getParameter("search");
         //filter-> value in ftl
+        //null politics nature celebrities
+        Configuration cfg = Helper.getConfig(getServletContext());
+        Template tmpl = cfg.getTemplate("all_topics.ftl");
+        HashMap<String, Object> root = new HashMap<>();
+        ArrayList<News> news = Helper.getNewsService().getNewsForListWithFilter(filter,s);
+        root.put("form_url", request.getRequestURI());
+        root.put("all", true);
+        root.put("news", news);
+        try {
+            tmpl.process(root, response.getWriter());
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +47,7 @@ public class NewsList extends HttpServlet {
         ArrayList<News> news = Helper.getNewsService().getNewsForList();
         root.put("form_url", request.getRequestURI());
         root.put("all", true);
-        root.put("news",news);
+        root.put("news", news);
         try {
             tmpl.process(root, response.getWriter());
         } catch (TemplateException e) {

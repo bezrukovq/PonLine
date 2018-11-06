@@ -6,7 +6,6 @@ import entities.Comment;
 import entities.User;
 import helper.Helper;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class UserService {
@@ -17,10 +16,11 @@ public class UserService {
         return userDAO.exist(login,passw);
     }
 
-    public boolean registerNewUser(String name, String login, String password, String description){
-        //TODO шифрование пароля
+    public boolean registerNewUser(String name, String login, String password, String description,String fileName){
         password = Helper.md5Custom(password);
-        return userDAO.addNewUser(new User(false,name,login,password,description));
+        User u = new User(false,name,login,password,description);
+        u.setPicPath(fileName);
+        return userDAO.addNewUser(u);
     }
     public boolean isThere(String login){
         return userDAO.isThere(login);
@@ -34,7 +34,7 @@ public class UserService {
         return userDAO.getComments(id);
     }
 
-    public ArrayList<String> getLikeUsers(String q) {
+    public ArrayList<User> getLikeUsers(String q) {
         return userDAO.getLikeUsers(q);
     }
 }

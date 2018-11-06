@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-4">
             <form class="container">
-                <img src="../../front/src/img_avatar.png" class="closePic" width="200"
+                <img src="${news.getuPicPath()}" class="closePic" width="200"
                      height="200">
             </form>
             <br>
@@ -47,7 +47,7 @@
                         <#list comments as c>
                         <li>
                             <div class="commenterImage">
-                                <img src="http://placekitten.com/50/50"/>
+                                <img src="${c.getuPicPath()}"/>
                             </div>
                             <div class="commentText">
                                 <h6>${c.getCrLogin()}</h6>
@@ -82,18 +82,11 @@
 
             </form>
 
-            <!--<form class="container" ali><h6>-->
-            <!--&lt;!&ndash;<#list news.getTags() as tag>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div align="center">${tag}</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</#list>&ndash;&gt;-->
-            <!--</h6>-->
-            <!--<h6>-->
-            <!--&lt;!&ndash;<#list news.getCategories() as tag>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div align="center">${tag}</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</#list>&ndash;&gt;-->
-            <!--</h6>-->
+            <form class="container" ali><h6>
+                ${news.getCategory()}
+            </h6>
 
-            <!--</form>-->
+            </form>
 
             <form class="container">
                 <a name="text">${news.getText()}</a>
@@ -103,11 +96,6 @@
 
 
             <br>
-
-            <form class="container">
-                <img name="image" src="../../front/src/img_avatar.png" class="closePic" width="100"
-                     height="100">
-            </form>
 
         </div>
     </div>

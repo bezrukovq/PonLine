@@ -5,6 +5,7 @@ import entities.Comment;
 import entities.User;
 import helper.Helper;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,9 +16,9 @@ public class SimpleUserDAO implements UserDAO {
         boolean res = false;
         try {
             Statement statement = connection.createStatement();
-             res = statement.execute("insert into users(admin, name, login, description, passw) values('false','"+user.getName()
+             res = statement.execute("insert into users(admin, name, login, description, passw,picpath) values('false','"+user.getName()
                     +"','"+user.getLogin()+ "','"
-                    +user.getDescription()+"','"+user.getPassword()+"')");
+                    +user.getDescription()+"','"+user.getPassword()+"','"+user.getPicPath()+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,12 +55,15 @@ public class SimpleUserDAO implements UserDAO {
 
     @Override
     public User getUser(String login) {
+        User user;
         try {
             PreparedStatement st = connection.prepareStatement("select * from users where login=?");
             st.setString(1,login);
             ResultSet rs = st.executeQuery();
             rs.next();
-            return new User(rs.getBoolean("admin"),rs.getString("name"),rs.getString("login"),rs.getString("description"));
+            user = new User(rs.getBoolean("admin"),rs.getString("name"),rs.getString("login"),rs.getString("description"));
+            user.setPicPath(rs.getString("picpath"));
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +80,7 @@ public class SimpleUserDAO implements UserDAO {
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                comments.add(new Comment(rs.getString("name"),rs.getString("date"),rs.getString("text"),id));
+                comments.add(new Comment(rs.getString("name"),rs.getString("date"),rs.getString("text"),id,rs.getString("picpath")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,15 +89,15 @@ public class SimpleUserDAO implements UserDAO {
     }
 
     @Override
-    public ArrayList<String> getLikeUsers(String q) {
-        ArrayList<String> logins= new ArrayList<>();
+    public ArrayList<User> getLikeUsers(String q) {
+        ArrayList<User> logins= new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement("select login from users where login like ? or name like ?");
             st.setString(1,q);
             st.setString(2,q);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                logins.add(rs.getString("login"));
+                logins.add(new User(rs.getString("login"),rs.getString("path")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

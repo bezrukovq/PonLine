@@ -25,4 +25,6 @@ public interface NewsDAO {
     void acceptNews(int id);
 
     void comment(Comment comment);
+
+    ArrayList<News> getNewsforListWithFilter(String filter,String s);
 }
