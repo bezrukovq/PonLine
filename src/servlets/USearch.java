@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UserPosts extends HttpServlet {
+public class USearch extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -25,21 +25,17 @@ public class UserPosts extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String user = (String) session.getAttribute("login");
-        String userToShow = (String)  request.getParameter("login");
         //if (!Helper.logged(request,session,response)) {
         Configuration cfg = Helper.getConfig(getServletContext());
-        Template tmpl = cfg.getTemplate("all_topics.ftl");
+        Template tmpl = cfg.getTemplate("Usearch.ftl");
         HashMap<String, Object> root = new HashMap<>();
-        ArrayList<News> news = Helper.getNewsService().getNewsForUserList(userToShow);
         root.put("form_url", request.getRequestURI());
-        root.put("all", false);
         root.put("logged", user!=null);
-        root.put("login", user!=null?user:" ");        root.put("news",news);
+        root.put("login", user!=null?user:" ");
         try {
             tmpl.process(root, response.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-        //  }
     }
 }

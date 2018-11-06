@@ -24,16 +24,13 @@ background: #e7e7e7">
         <button name="new_topic" onclick="document.location='/newpost'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Create
             topic
         </button>
+        <button name="main" onclick="document.location='/usearch'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Search Users</button>
 
-        <p class="navbar-text navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">Profile <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="/profile" name="profile">My profile</a></li>
-                <li><a href="/login" name="quit">Quit</a></li>
-            </ul>
-        </li>
+        <#if logged>
+        <button name="main" onclick="document.location='/profile?login=${login}'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Profile</button>
+        <#else>
+        <button name="main" onclick="document.location='/login'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Log In</button>
+        </#if>
     </div>
 </nav>
 </body>

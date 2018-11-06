@@ -42,6 +42,8 @@ public class ToCheckList extends HttpServlet {
                     ArrayList<News> news = Helper.getNewsService().getNewsForAdminList();
                     root.put("form_url", request.getRequestURI());
                     root.put("all", false);
+                    root.put("logged", user!=null);
+                    root.put("login", user!=null?user:" ");
                     root.put("news", news);
                     try {
                         tmpl.process(root, response.getWriter());

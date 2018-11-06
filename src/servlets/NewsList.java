@@ -20,6 +20,9 @@ public class NewsList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String filter = (String) request.getParameter("filter");
         String s =(String) request.getParameter("search");
+        HttpSession session = request.getSession();
+        Helper.logged(request, response);
+        String user = (String) session.getAttribute("login");
         //filter-> value in ftl
         //null politics nature celebrities
         Configuration cfg = Helper.getConfig(getServletContext());
@@ -28,6 +31,8 @@ public class NewsList extends HttpServlet {
         ArrayList<News> news = Helper.getNewsService().getNewsForListWithFilter(filter,s);
         root.put("form_url", request.getRequestURI());
         root.put("all", true);
+        root.put("logged", user!=null);
+        root.put("login", user!=null?user:" ");
         root.put("news", news);
         try {
             tmpl.process(root, response.getWriter());
@@ -46,6 +51,8 @@ public class NewsList extends HttpServlet {
         HashMap<String, Object> root = new HashMap<>();
         ArrayList<News> news = Helper.getNewsService().getNewsForList();
         root.put("form_url", request.getRequestURI());
+        root.put("logged", user!=null);
+        root.put("login", user!=null?user:" ");
         root.put("all", true);
         root.put("news", news);
         try {

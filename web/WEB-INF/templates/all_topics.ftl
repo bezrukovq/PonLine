@@ -16,8 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-    <#include 'navbar.html'>
+    <#include 'navbar.ftl'>
 <div class="container">
     <br>
 <#if all>
@@ -49,10 +48,7 @@
             <form class="container">
                 <a href="/profile?login=${item.getCrLogin()}" name="/profile?id=${item.getCrLogin()}">${item.getCrLogin()}</a>
             </form>
-
-            <form class="container">
-                <a href="vk.com/tim_baron" name="article_link">article link</a>
-            </form>
+<br>
         </div>
 
         <div class="col-md-2">

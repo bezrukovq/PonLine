@@ -83,4 +83,12 @@
         <servlet-name>search</servlet-name>
         <url-pattern>/searchserv</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>usearch</servlet-name>
+        <servlet-class>servlets.USearch</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>usearch</servlet-name>
+        <url-pattern>/usearch</url-pattern>
+    </servlet-mapping>
 </web-app>

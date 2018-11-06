@@ -56,6 +56,7 @@ public class NewsPost extends HttpServlet {
                 root.put("form_url", request.getRequestURI());
                 root.put("news", news);
                 root.put("logged", user!=null);
+                root.put("login", user!=null?user:" ");
                 root.put("comments",comments);
                 try {
                     tmpl.process(root, response.getWriter());
@@ -76,6 +77,8 @@ public class NewsPost extends HttpServlet {
                             Template tmpl = cfg.getTemplate("new_topic_admin.ftl");
                             HashMap<String, Object> root = new HashMap<>();
                             root.put("form_url", request.getRequestURI());
+                            root.put("logged", user!=null);
+                            root.put("login", user!=null?user:" ");
                             root.put("news", news);
                             try {
                                 tmpl.process(root, response.getWriter());

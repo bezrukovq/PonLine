@@ -20,8 +20,9 @@ public class NewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         String text = request.getParameter("text");
+        String filter = (String) request.getParameter("filter");
         String user = (String) request.getSession().getAttribute("login");
-        Helper.getNewsService().addPost(new News(title,text,user,new Date().toString()));
+        Helper.getNewsService().addPost(new News(title,text,user,new Date().toString(),filter));
         response.sendRedirect("/news");
     }
 
@@ -40,6 +41,8 @@ public class NewPost extends HttpServlet {
             Template tmpl = cfg.getTemplate("new_topic.ftl");
             HashMap<String, Object> root = new HashMap<>();
             root.put("form_url", request.getRequestURI());
+            root.put("logged", user!=null);
+            root.put("login", user!=null?user:" ");
             try {
                 tmpl.process(root, response.getWriter());
             } catch (TemplateException e) {

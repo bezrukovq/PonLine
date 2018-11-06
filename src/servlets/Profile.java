@@ -34,6 +34,8 @@ public class Profile extends HttpServlet {
             Template tmpl = cfg.getTemplate("profile.ftl");
             HashMap<String, Object> root = new HashMap<>();
             root.put("form_url", request.getRequestURI());
+            root.put("logged", user!=null);
+            root.put("login", user!=null?user:" ");
             root.put("thisUser", userToShow.equals(user));
             User DBuser = Helper.getUserService().getUser(userToShow);
             if(DBuser!=null) {

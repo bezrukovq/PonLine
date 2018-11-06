@@ -19,7 +19,7 @@
 
 </head>
 <body>
-    <#include 'navbar.html'>
+    <#include 'navbar.ftl'>
 
 <div class="container">
 

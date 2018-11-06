@@ -17,11 +17,12 @@ public class News {
     private String category;
     private ArrayList<String> files;
 
-    public News(String title, String text, String user, String date) {
+    public News(String title, String text, String user, String date,String category) {
         this.header = title;
         this.text = text;
         this.crLogin = user;
         this.date = date;
+        this.category = category;
     }
 
     public void setTags(ArrayList<String> tags) {

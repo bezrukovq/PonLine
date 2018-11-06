@@ -16,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<#include 'navbar.html'>
+<#include 'navbar.ftl'>
 <div class="container">
     <h1 align="center">
         New Topic
@@ -66,11 +66,19 @@
                     </textarea>
                 </div>
 
-                <div class="form-group">
+                <#--<div class="form-group">
                     <label for="attach">Attach images</label>
                     <input type="file" class="form-control-file" id="attach" name="attach">
+                </div>-->
+                <label for="category">Pick a category</label>
+                <div class="form-group" id="category">
+                    <select class="form-control" name="filter" id="filter">
+                        <option name="default" value="1">No Category</option>
+                        <option name="politics" value="2">Politics</option>
+                        <option name="nature" value="3">Nature</option>
+                        <option name="celebrities" value="4">Celebrities</option>
+                    </select>
                 </div>
-
                 <input type="submit" class="btn btn-primary btn-block" value="Send" id="btn_register">
 
             </form>

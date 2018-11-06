@@ -16,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <#include 'navbar.html'>
+    <#include 'navbar.ftl'>
 
 <div class="container" align="center">
     <h1 align="center">
