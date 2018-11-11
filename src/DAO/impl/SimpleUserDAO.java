@@ -80,7 +80,7 @@ public class SimpleUserDAO implements UserDAO {
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                comments.add(new Comment(rs.getString("name"),rs.getString("date"),rs.getString("text"),id,rs.getString("picpath")));
+                comments.add(new Comment(rs.getString("login"),rs.getString("date"),rs.getString("text"),id,rs.getString("picpath")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

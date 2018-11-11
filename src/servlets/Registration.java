@@ -42,7 +42,7 @@ public class Registration extends HttpServlet {
                     final String path = "C:\\Univer\\Infa\\projectAbramskiy\\PonLine\\web\\UserPics";
                     final Part filePart = request.getPart("file");
                     String fileName;
-                    if(filePart.getSize()==-1) {
+                    if(filePart.getSize()!=-1) {
                         fileName = System.currentTimeMillis()+ getFileName(filePart);
 
                         OutputStream out = null;

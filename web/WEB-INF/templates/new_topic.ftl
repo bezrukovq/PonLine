@@ -70,7 +70,7 @@
                     <label for="attach">Attach images</label>
                     <input type="file" class="form-control-file" id="attach" name="attach">
                 </div>-->
-                
+
                 <label for="category">Pick a category</label>
                 <div class="form-group" id="category">
                     <select class="form-control" name="filter" id="filter">

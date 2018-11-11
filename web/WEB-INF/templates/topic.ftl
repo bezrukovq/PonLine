@@ -50,7 +50,10 @@
                                 <img src="${c.getuPicPath()}"/>
                             </div>
                             <div class="commentText">
+                                <a href="/profile?login=${c.getCrLogin()}">
                                 <h6>${c.getCrLogin()}</h6>
+                                </a>
+
                                 <p class="">${c.getText()}</p> <span class="date sub-text">${c.getDate()}</span>
 
                             </div>
