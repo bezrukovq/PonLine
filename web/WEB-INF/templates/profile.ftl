@@ -39,11 +39,6 @@
                 <a href="/uposts?login=${user.getLogin()}" class="card-link" id="Topics">Topics</a>
             </div>
             <#if thisUser>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <input name="button" type="button" class="btn btn-info btn-block" value="Edit" id="btn_edit">
-                </li>
-            </ul>
             <#if user.isAdmin()>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
