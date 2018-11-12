@@ -21,14 +21,13 @@ height: 50px;
 background: #e7e7e7">
     <div class="container">
         <button name="main" onclick="document.location='/news'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Main</button>
-        <button name="new_topic" onclick="document.location='/newpost'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Create
-            topic
-        </button>
+
         <button name="main" onclick="document.location='/usearch'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Search Users</button>
 
         <#if logged>
-        <button name="main" onclick="document.location='/profile?login=${login}'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Profile</button>
-        <button name="main" onclick="" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Edit profile</button>
+            <button name="new_topic" onclick="document.location='/newpost'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Create topic
+            </button>
+            <button name="main" onclick="document.location='/profile?login=${login}'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Profile</button>
         <#else>
         <button name="main" onclick="document.location='/login'" type="button" class="btn btn-default navbar-btn" style="background: #e7e7e7">Log In</button>
         </#if>

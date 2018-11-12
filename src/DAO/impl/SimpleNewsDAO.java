@@ -99,7 +99,7 @@ public class SimpleNewsDAO implements NewsDAO {
         ArrayList<News> newsList = new ArrayList<>();
         try {
             PreparedStatement st = conn.prepareStatement(
-                    "select n.id, u.picpath,u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and u.login=? order by n.id limit 5");
+                    "select n.id, u.picpath,u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and u.login=? order by n.id");
             st.setString(1,userToShow);
             ResultSet rs =st.executeQuery();
             while (rs.next()){
@@ -175,11 +175,11 @@ public class SimpleNewsDAO implements NewsDAO {
         try {
             if(filter!=0) {
                 st = conn.prepareStatement(
-                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and (n.header like ?) and n.category=?  order by n.id limit 5");
+                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and (n.header like ?) and n.category=?  order by n.id");
                 st.setInt(2, filter);
             } else {
                 st = conn.prepareStatement(
-                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and n.header like ? order by n.id limit 5");
+                        "select u.picpath,n.id, u.login, n.header,n.category, n.date from news as n inner join users u on n.author_id = u.id where n.accepted = true and n.header like ? order by n.id ");
             }
             st.setString(1, "%" + s + "%");
             ResultSet rs =st.executeQuery();
@@ -202,6 +202,10 @@ public class SimpleNewsDAO implements NewsDAO {
                 return "Nature";
             case 4:
                 return "Celebrities";
+            case 5:
+                return "Army/War";
+            case 6:
+                return "Tech";
         }
         return "NOT FOUND";
     }

@@ -10,8 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.*;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -38,7 +36,7 @@ public class Registration extends HttpServlet {
             Matcher m2 = p2.matcher(password);
             if (matcher.matches()&& m2.matches() ){
                 if (!userService.isThere(login)) {
-                    //downloading
+                    //CHANGE PATH TO YOURS
                     final String path = "C:\\Univer\\Infa\\projectAbramskiy\\PonLine\\web\\UserPics";
                     final Part filePart = request.getPart("file");
                     String fileName;
@@ -73,11 +71,11 @@ public class Registration extends HttpServlet {
                             }
                         }
                         userService.registerNewUser(name, login, password, desc, "../UserPics/"+fileName);
+                        response.sendRedirect("/login");
                     } else{
                         userService.registerNewUser(name, login, password, desc, null);
+                        response.sendRedirect("/login");
                     }
-                    response.sendRedirect("/login");
-
                 } else {
                     response.sendRedirect("/registration?msg=loginerror");
                 }

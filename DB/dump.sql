@@ -406,6 +406,8 @@ COPY public.category (id, c) FROM stdin;
 3	Nature
 2	Politics
 4	Celebrities
+5	Army/War
+6	Tech
 \.
 
 
@@ -413,7 +415,7 @@ COPY public.category (id, c) FROM stdin;
 -- Name: category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.category_id_seq', 2, true);
+SELECT pg_catalog.setval('public.category_id_seq', 3, true);
 
 
 --
@@ -421,12 +423,14 @@ SELECT pg_catalog.setval('public.category_id_seq', 2, true);
 --
 
 COPY public.comment (id, sender_id, date, text, news_id) FROM stdin;
-2	6	Fri Nov 02 14:43:17 MSK 2018	trestrt	1
 3	10	Fri Nov 02 19:46:38 MSK 2018	hello world	1
 4	10	Fri Nov 02 19:46:47 MSK 2018	im new here	1
 5	10	Fri Nov 02 19:47:13 MSK 2018	wtf is 	1
 6	6	Tue Nov 06 21:42:26 MSK 2018	amazing pic bro	15
 7	19	Tue Nov 06 21:46:49 MSK 2018	look at my pic boys	1
+8	6	Fri Nov 09 14:26:58 MSK 2018	NO!	13
+9	6	Fri Nov 09 14:27:54 MSK 2018	s dr	19
+2	6	Fri Nov 02 14:43:17 MSK 2018	test	1
 \.
 
 
@@ -434,7 +438,7 @@ COPY public.comment (id, sender_id, date, text, news_id) FROM stdin;
 -- Name: comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.comment_id_seq', 7, true);
+SELECT pg_catalog.setval('public.comment_id_seq', 9, true);
 
 
 --
@@ -457,12 +461,13 @@ SELECT pg_catalog.setval('public.file_id_seq', 1, false);
 --
 
 COPY public.news (id, author_id, topic_id, header, text, accepted, date, category) FROM stdin;
-4	6	1	EXAMPLE TOPIC4	The main reason for going to university is to get an academic qualification, but personally, I think that the social side of things and developing as a person are equally important. The good thing about university life is that you are left to your own devices, unlike school, where you're told what to do and how to do it. It's important to socialise and meet new friends. lt takes some people longer than others. If a student has any problems, about anything, there's student counselling available at all universities, where they try and help out as much as possible. I've been a volunteer for our Student Counselling Scheme for some time now. I've found it very rewarding, not only with helping other students through university life but also as an extra-curricular activity.	t	Yesterday	2
-11	6	1	Normal Title	Normal Text	t	Fri Nov 02 14:15:27 MSK 2018	3
-13	10	1	IM BEST BACKEND DEVELOPER	TIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMUR	t	Fri Nov 02 19:46:25 MSK 2018	4
+2	27	1	&#1054;&#1073;&#1084;&#1077;&#1085; &#1091;&#1076;&#1072;&#1088;&#1072;&#1084;&#1080;: &#1048;&#1079;&#1088;&#1072;&#1080;&#1083;&#1100; &#1080; &#1055;&#1072;&#1083;&#1077;&#1089;&#1090;&#1080;&#1085;&#1072; &#1074;&#1086;&#1079;&#1086;&#1073;&#1085;&#1086;&#1074;&#1083;&#1103;&#1102;&#1090; &#1082;&#1086;&#1085;&#1092;&#1083;&#1080;&#1082;&#1090;	&#1052;&#1077;&#1078;&#1076;&#1091; &#1048;&#1079;&#1088;&#1072;&#1080;&#1083;&#1077;&#1084; &#1080; &#1055;&#1072;&#1083;&#1077;&#1089;&#1090;&#1080;&#1085;&#1086;&#1081; &#1089;&#1085;&#1086;&#1074;&#1072; &#1087;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1101;&#1089;&#1082;&#1072;&#1083;&#1072;&#1094;&#1080;&#1103; &#1076;&#1083;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1082;&#1086;&#1085;&#1092;&#1083;&#1080;&#1082;&#1090;&#1072;  &#1089;&#1090;&#1086;&#1088;&#1086;&#1085;&#1099; &#1086;&#1073;&#1084;&#1077;&#1085;&#1103;&#1083;&#1080;&#1089;&#1100; &#1088;&#1072;&#1082;&#1077;&#1090;&#1085;&#1099;&#1084;&#1080; &#1091;&#1076;&#1072;&#1088;&#1072;&#1084;&#1080;, &#1074; &#1088;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;&#1077; &#1082;&#1086;&#1090;&#1086;&#1088;&#1099;&#1093; &#1077;&#1089;&#1090;&#1100; &#1087;&#1086;&#1075;&#1080;&#1073;&#1096;&#1080;&#1077;. &#1052;&#1086;&#1089;&#1082;&#1074;&#1072; &#1086;&#1089;&#1091;&#1076;&#1080;&#1083;&#1072; &#1087;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1103;&#1097;&#1077;&#1077; &#1080; &#1087;&#1088;&#1080;&#1079;&#1074;&#1072;&#1083;&#1072; &#1082; &#1076;&#1077;&#1101;&#1089;&#1082;&#1072;&#1083;&#1072;&#1094;&#1080;&#1080; &#1082;&#1086;&#1085;&#1092;&#1083;&#1080;&#1082;&#1090;&#1072;. &#1050;&#1088;&#1086;&#1084;&#1077; &#1090;&#1086;&#1075;&#1086;, &#1056;&#1086;&#1089;&#1089;&#1080;&#1103; &#1087;&#1088;&#1077;&#1076;&#1083;&#1086;&#1078;&#1080;&#1083;&#1072; &#1074;&#1086;&#1089;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100; &#1072;&#1088;&#1072;&#1073;&#1086;-&#1080;&#1079;&#1088;&#1072;&#1080;&#1083;&#1100;&#1089;&#1082;&#1080;&#1081; &#1076;&#1080;&#1072;&#1083;&#1086;&#1075; &#1085;&#1072; &#1073;&#1072;&#1079;&#1077; &#1080;&#1079;&#1074;&#1077;&#1089;&#1090;&#1085;&#1099;&#1093; &#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1081; &#1057;&#1086;&#1074;&#1077;&#1090;&#1072; &#1073;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1080; &#1080; &#1043;&#1077;&#1085;&#1077;&#1088;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1072;&#1089;&#1089;&#1072;&#1084;&#1073;&#1083;&#1077;&#1080; &#1054;&#1054;&#1053;, &#1072; &#1090;&#1072;&#1082;&#1078;&#1077; &#1040;&#1088;&#1072;&#1073;&#1089;&#1082;&#1086;&#1081; &#1084;&#1080;&#1088;&#1085;&#1086;&#1081; &#1080;&#1085;&#1080;&#1094;&#1080;&#1072;&#1090;&#1080;&#1074;&#1099;.	t	Mon Nov 12 23:13:57 MSK 2018	5
+13	10	1	IM BEST FRONTEND DEVELOPER	TIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMURTIMUR	t	Fri Nov 02 19:46:25 MSK 2018	4
 1	6	1	EXAMPLE TOPIC	The main reason for going to university is to get an academic qualification, but personally, I think that the social side of things and developing as a person are equally important. The good thing about university life is that you are left to your own devices, unlike school, where you're told what to do and how to do it. It's important to socialise and meet new friends. lt takes some people longer than others. If a student has any problems, about anything, there's student counselling available at all universities, where they try and help out as much as possible. I've been a volunteer for our Student Counselling Scheme for some time now. I've found it very rewarding, not only with helping other students through university life but also as an extra-curricular activity.	t	Yesterday	1
-15	19	1	LOOOK AT THE PIC!!!  	THATS AWESOME                    	t	Tue Nov 06 21:40:22 MSK 2018	\N
-17	6	1	IM A MAN	EEEE	t	Tue Nov 06 23:50:49 MSK 2018	4
+18	26	1	IM DIMA DIMA             	HEHEHEHEHEHEHEEHEH	t	Fri Nov 09 12:55:01 MSK 2018	2
+19	6	1	DR ARSA	ARS S DR	t	Fri Nov 09 14:27:21 MSK 2018	4
+15	19	1	LOOOK AT THE PIC!!!  	THATS AWESOME                    	t	Tue Nov 06 21:40:22 MSK 2018	4
+21	27	1	&#1056;&#1086;&#1089;&#1089;&#1080;&#1081;&#1089;&#1082;&#1080;&#1077; &#1074;&#1086;&#1077;&#1085;&#1085;&#1099;&#1077; &#1079;&#1072;&#1092;&#1080;&#1082;&#1089;&#1080;&#1088;&#1086;&#1074;&#1072;&#1083;&#1080; &#1095;&#1077;&#1090;&#1099;&#1088;&#1077; &#1086;&#1073;&#1089;&#1090;&#1088;&#1077;&#1083;&#1072; &#1074; &#1087;&#1088;&#1080;&#1075;&#1086;&#1088;&#1086;&#1076;&#1072;&#1093; &#1040;&#1083;&#1077;&#1087;&#1087;&#1086;	&#1041;&#1086;&#1077;&#1074;&#1080;&#1082;&#1080; &#1095;&#1077;&#1090;&#1099;&#1088;&#1077; &#1088;&#1072;&#1079;&#1072; &#1074; &#1090;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1089;&#1091;&#1090;&#1086;&#1082; &#1086;&#1073;&#1089;&#1090;&#1088;&#1077;&#1083;&#1103;&#1083;&#1080; &#1079;&#1072;&#1087;&#1072;&#1076;&#1085;&#1099;&#1081; &#1087;&#1088;&#1080;&#1075;&#1086;&#1088;&#1086;&#1076; &#1040;&#1083;&#1077;&#1087;&#1087;&#1086;, &#1089;&#1086;&#1086;&#1073;&#1097;&#1080;&#1083; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100; &#1088;&#1086;&#1089;&#1089;&#1080;&#1081;&#1089;&#1082;&#1086;&#1075;&#1086; &#1062;&#1077;&#1085;&#1090;&#1088;&#1072; &#1087;&#1086; &#1087;&#1088;&#1080;&#1084;&#1080;&#1088;&#1077;&#1085;&#1080;&#1102; &#1074;&#1088;&#1072;&#1078;&#1076;&#1091;&#1102;&#1097;&#1080;&#1093; &#1089;&#1090;&#1086;&#1088;&#1086;&#1085; &#1074; &#1057;&#1080;&#1088;&#1080;&#1080; &#1075;&#1077;&#1085;&#1077;&#1088;&#1072;&#1083;-&#1083;&#1077;&#1081;&#1090;&#1077;&#1085;&#1072;&#1085;&#1090; &#1042;&#1083;&#1072;&#1076;&#1080;&#1084;&#1080;&#1088; &#1057;&#1072;&#1074;&#1095;&#1077;&#1085;&#1082;&#1086; &#1074; &#1074;&#1086;&#1089;&#1082;&#1088;&#1077;&#1089;&#1077;&#1085;&#1100;&#1077;.	f	Mon Nov 12 23:18:07 MSK 2018	5
 \.
 
 
@@ -470,7 +475,7 @@ COPY public.news (id, author_id, topic_id, header, text, accepted, date, categor
 -- Name: news_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.news_id_seq', 17, true);
+SELECT pg_catalog.setval('public.news_id_seq', 21, true);
 
 
 --
@@ -499,7 +504,6 @@ COPY public.tags_to_news (id, tag_id, news_id) FROM stdin;
 1	1	1
 3	2	1
 4	3	1
-8	2	4
 \.
 
 
@@ -550,6 +554,8 @@ COPY public.users (id, admin, name, login, description, passw, picpath) FROM std
 19	f	Vova	Vova1		5ce0a3d93cc933d8bdcc1a4b0f57b0b2	../UserPics/1541529574767Auth.png
 23	f	qq	Defa		eef6231991b4e8be1f7f22867a6441ea	../../front/src/img_avatar.png
 10	f	Crt	Timur		43915ea0bfcc4ec0dd3184e75e012d41	../../front/src/img_avatar.png
+26	f	Dimoon	Dima		5fed60704b45e9c7a2c3ec4d983b534e	../UserPics/dima.jpg
+27	f	MAAAN	ArmyMan		5fed60704b45e9c7a2c3ec4d983b534e	../UserPics/warFace.png
 \.
 
 
@@ -557,7 +563,7 @@ COPY public.users (id, admin, name, login, description, passw, picpath) FROM std
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 23, true);
+SELECT pg_catalog.setval('public.users_id_seq', 27, true);
 
 
 --

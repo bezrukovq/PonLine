@@ -78,6 +78,8 @@
                         <option name="politics" value="2">Politics</option>
                         <option name="nature" value="3">Nature</option>
                         <option name="celebrities" value="4">Celebrities</option>
+                        <option name="nature" value="5">Army/War</option>
+                        <option name="nature" value="6">Tech</option>
                     </select>
                 </div>
                 <input type="submit" class="btn btn-primary btn-block" value="Send" id="btn_register">

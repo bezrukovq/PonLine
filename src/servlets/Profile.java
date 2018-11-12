@@ -26,31 +26,27 @@ public class Profile extends HttpServlet {
         HttpSession session = request.getSession();
         Helper.logged(request, response);
         String user = (String) session.getAttribute("login");
-        if (user == null) {
-            response.sendRedirect("/news");
-        } else {
-            String userToShow =(String) request.getParameter("login");
-            Configuration cfg = Helper.getConfig(getServletContext());
-            Template tmpl = cfg.getTemplate("profile.ftl");
-            HashMap<String, Object> root = new HashMap<>();
-            root.put("form_url", request.getRequestURI());
-            root.put("logged", user!=null);
-            root.put("login", user!=null?user:" ");
-            root.put("thisUser", userToShow.equals(user));
-            User DBuser = Helper.getUserService().getUser(userToShow);
-            if(DBuser!=null) {
-                if(userToShow.equals(user))
-                session.setAttribute("userClass",DBuser);
-                root.put("user", DBuser);
-                try {
-                    tmpl.process(root, response.getWriter());
-                } catch (TemplateException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                response.sendRedirect("/news");
-            }
 
+        String userToShow = (String) request.getParameter("login");
+        Configuration cfg = Helper.getConfig(getServletContext());
+        Template tmpl = cfg.getTemplate("profile.ftl");
+        HashMap<String, Object> root = new HashMap<>();
+        root.put("form_url", request.getRequestURI());
+        root.put("logged", user != null);
+        root.put("login", user != null ? user : " ");
+        root.put("thisUser", userToShow.equals(user));
+        User DBuser = Helper.getUserService().getUser(userToShow);
+        if (DBuser != null) {
+            if (userToShow.equals(user))
+                session.setAttribute("userClass", DBuser);
+            root.put("user", DBuser);
+            try {
+                tmpl.process(root, response.getWriter());
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
+        } else {
+            response.sendRedirect("/news");
         }
     }
 }
