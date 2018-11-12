@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+
 @MultipartConfig
 public class Registration extends HttpServlet {
     UserService userService = Helper.getUserService();
@@ -34,68 +35,23 @@ public class Registration extends HttpServlet {
             Matcher matcher = pattern.matcher(login);
             Pattern p2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$");
             Matcher m2 = p2.matcher(password);
-            if (matcher.matches()&& m2.matches() ){
+            if (matcher.matches() && m2.matches()) {
                 if (!userService.isThere(login)) {
-                    //CHANGE PATH TO YOURS
-                    final String path = "C:\\Univer\\Infa\\projectAbramskiy\\PonLine\\web\\UserPics";
-                    final Part filePart = request.getPart("file");
-                    String fileName;
-                    if(filePart.getSize()!=-1) {
-                        fileName = System.currentTimeMillis()+ getFileName(filePart);
 
-                        OutputStream out = null;
-                        InputStream filecontent = null;
-                        final PrintWriter writer = response.getWriter();
-
-                        try {
-                            out = new FileOutputStream(new File(path + File.separator
-                                    + fileName));
-                            filecontent = filePart.getInputStream();
-
-                            int read = 0;
-                            final byte[] bytes = new byte[512];
-
-                            while ((read = filecontent.read(bytes)) != -1) {
-                                out.write(bytes, 0, read);
-                            }
-                        } catch (FileNotFoundException fne) {
-                        } finally {
-                            if (out != null) {
-                                out.close();
-                            }
-                            if (filecontent != null) {
-                                filecontent.close();
-                            }
-                            if (writer != null) {
-                                writer.close();
-                            }
-                        }
-                        userService.registerNewUser(name, login, password, desc, "../UserPics/"+fileName);
-                        response.sendRedirect("/login");
-                    } else{
-                        userService.registerNewUser(name, login, password, desc, null);
-                        response.sendRedirect("/login");
-                    }
+                    String fileName =Helper.loadPic(request, response);
+                    userService.registerNewUser(name, login, password, desc, "../UserPics/" + fileName);
+                    response.sendRedirect("/login");
                 } else {
-                    response.sendRedirect("/registration?msg=loginerror");
+                    userService.registerNewUser(name, login, password, desc, null);
+                    response.sendRedirect("/login");
                 }
             } else {
-                response.sendRedirect("/registration");
-            }
-        }
-            }
+                response.sendRedirect("/registration?msg=loginerror");
 
-    private String getFileName(final Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(
-                        content.indexOf('=') + 1).trim().replace("\"", "");
             }
         }
-        return null;
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -104,7 +60,7 @@ public class Registration extends HttpServlet {
         if (user != null) {
             response.sendRedirect("/main"); //зачем авторизованному логиниться
         } else {
-            if (!Helper.logged(request,response)) {
+            if (!Helper.logged(request, response)) {
                 Configuration cfg = Helper.getConfig(getServletContext());
                 Template tmpl = cfg.getTemplate("registration.html");
                 HashMap<String, Object> root = new HashMap<>();
